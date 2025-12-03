@@ -1,0 +1,162 @@
+1)#Count_digits
+
+
+
+____________________________________________________________________________________________________________
+2)#Reverse Digits of A Number
+"""
+Problem Statement: Given an integer N return the reverse of the given number.
+
+Note: If a number has trailing zeros, then its reverse will not include them. For e.g , reverse of 10400 will be 401 instead of 00401.
+
+Examples
+Input: N = 12345
+Output:54321
+Explanation: The reverse of 12345 is 54321.
+
+Input: N = 7789                
+Output: 9877
+Explanation: The reverse of number 7789 is 9877.
+"""
+
+n=int(input("Enter the number:-"))
+def reverse_number(n):
+    n=abs(n)
+    rev=0
+    
+    while n>0:
+        digit=n%10
+        rev=rev*10+digit
+        n//=10
+    return rev
+print(reverse_number(n))
+________________________________________________________________________________________________________________
+3)#Check if a number is Palindrome or Not
+"""
+Problem Statement: Given an integer N, return true if it is a palindrome else return false.
+
+A palindrome is a number that reads the same backward as forward. For example, 121, 1331, and 4554 are palindromes because they remain the same when their digits are reversed.
+
+Examples
+Example 1:
+Input:N = 4554
+Output:Palindrome Number
+Explanation: The reverse of 4554 is 4554 and therefore it is palindrome number.
+                                        
+Example 2:
+Input:N = 7789          
+Output: Not Palindrome
+Explanation: The reverse of number 7789 is 9877 and therefore it is not palindrome.
+"""
+
+n=int(input("Enter the number:-"))
+def is_palindrome(n):
+    original=n
+    rev=0
+    
+    while n>0:
+        digit=n%10
+        rev=rev*10+digit
+        n//=10
+    return rev==original
+if is_palindrome(n):
+    print("Palindrome number")
+else:
+    print("not palindrome")
+#Another Method-1:-
+if n==n[::-1]:
+    print("Palindrome number")
+else:
+    print("Not palindrome")
+__________________________________________________________________________________________________________
+4)#Find GCD of two numbers
+"""
+Problem Statement: Given two integers N1 and N2, find their greatest common divisor.
+
+Examples
+Example 1:
+Input: N1 = 9, N2 = 12
+
+Output: 3
+Explanation:
+Factors of 9: 1, 3, 9
+Factors of 12: 1, 2, 3, 4, 6, 12
+Common Factors: 1, 3
+Greatest common factor: 3 (GCD)
+
+Example 2:
+Input: N1 = 20, N2 = 15
+
+Output: 5
+Explanation:
+Factors of 20: 1, 2, 4, 5, 10, 20
+Factors of 15: 1, 3, 5, 15
+Common Factors: 1, 5
+Greatest common factor: 5 (GCD)
+"""
+n1=int(input("Enter 1st Number:-"))
+n2=int(input("Enter the 2nd Number:-"))
+def GCD(a,b):
+    while b!=0:
+        a,b=b,a%b
+    return a
+print(GCD(n1,n2))
+#Method-2:-
+import math
+n1=int(input("Enter 1st Number:-"))
+n2=int(input("Enter the 2nd Number:-"))
+print(math.gcd(n1,n2))
+_______________________________________________________________________________________
+5)#Check if a number is Armstrong Number or not
+"""
+Problem Statement:Given an integer N, return true it is an Armstrong number otherwise return false.
+
+An Amrstrong number is a number that is equal to the sum of its own digits each raised to the power of the number of digits.
+Examples
+Example 1:
+Input:N = 153
+Output:True
+Explanation: 1^3+5^3+3^3 = 1 + 125 + 27 = 153
+                                        
+Example 2:
+Input:N = 371                
+Output: True
+Explanation: 3^3+7^3+1^3 = 27 + 343 + 1 = 371
+"""
+n=int(input("Enter the number:-"))
+
+def is_armstrong(n):
+    digits=list(map(int,str(n)))
+    power=len(digits)
+    
+    total=sum(d ** power for d in digits)
+    return total==n
+    
+if is_armstrong(n):
+    print(True)
+else:
+    print(False)
+_______________________________________________________________________________________________________________________
+6)#Print all Divisors of a given Number
+"""
+Problem Statement: Given an integer N, return all divisors of N.
+A divisor of an integer N is a positive integer that divides N without leaving a remainder. In other words, if N is divisible by another integer without any remainder, then that integer is considered a divisor of N.
+
+Examples
+Input: N = 36
+Output: [1, 2, 3, 4, 6, 9, 12, 18, 36]  
+Explanation: The divisors of 36 are 1, 2, 3, 4, 6, 9, 12, 18, 36.
+
+Input: N = 12
+Output: [1, 2, 3, 4, 6, 12]
+Explanation: The divisors of 12 are 1, 2, 3, 4, 6, 12.
+"""
+n=int(input("Enter the number:-"))
+def divisor(n):
+    result=[]
+    for i in range(1,n+1):
+        if n%i==0:
+            result.append(i)
+    return result
+print(divisor(n))
+__________________________________________________________________________________________________________________________     
