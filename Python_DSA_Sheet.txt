@@ -159,4 +159,325 @@ def divisor(n):
             result.append(i)
     return result
 print(divisor(n))
-__________________________________________________________________________________________________________________________     
+__________________________________________________________________________________________________________________________  
+#Check for prime:-
+
+n=int(input("Enter the number:-"))
+def is_prime(n):
+    if n<=1:
+        return False
+    for i in range(2,n):
+        if n%i==0:
+            return False
+    return True
+print("Prime" if is_prime(n) else "Not prime")
+____________________________________________________________________________________________________________________________
+#Print Name N times using Recursion:-
+"""
+Problem Description: Given an integer N, write a program to print your name N times.
+
+Examples
+Input: N = 5
+Output: shital shital shital shital shital  
+Explanation: Name is printed 3 times.
+
+Input: N = 1
+Output: shital  
+Explanation: Name is printed once.
+"""
+name=input("Enter the name:-")
+N=int(input("Enter the N:-"))
+def print_name(n,name):
+    if n==0:
+        return 
+    
+    print(name,end=" ")
+    print_name(n-1,name)
+print_name(N,name)
+_________________________________________________________________________________________________________________________________
+#Print 1 to N using Recursion
+"""
+Problem Description: Given an integer N, write a program to print numbers from 1 to N.
+
+Examples
+Input: N = 4
+Output: 1, 2, 3, 4
+Explanation: All the numbers from 1 to 4 are printed.
+
+Input: N = 1
+Output: 1 
+Explanation: This is the base case.
+"""
+
+n=int(input("Enter the number:-"))
+def print_1_to_n(i,n):
+    if i>n:
+        return 
+    print(i,end=" ")
+    print_1_to_n(i+1,n)
+print_1_to_n(1,n)
+________________________________________________________________________________________________________________________________________----
+#Print N to 1 using Recursion
+"""
+Problem Description: Given an integer N, write a program to print numbers from N to 1.
+
+Examples
+Input: N = 4
+Output: 4, 3, 2, 1
+Explanation: All the numbers from 4 to 1 are printed.
+
+Input: N = 1
+Output: 1 
+Explanation: This is the base case.
+"""
+
+n=int(input("Enter the n:"))
+def print_n_to_1(n):
+    if n==0:
+        return
+    print(n,end=" ")
+    print_n_to_1(n-1)
+print_n_to_1(n)
+________________________________________________________________________________________________________________________________________________
+#Sum of first N Natural Numbers
+"""
+Problem Statement: Given a number ‘N’, find out the sum of the first N natural numbers .
+
+Examples
+Input: N=5
+Output: 15
+Explanation: 1+2+3+4+5=15
+
+Input: N=6
+Output: 21
+Explanation: 1+2+3+4+5+6=15
+"""
+n=int(input("Enter the number:-"))
+#Method-1:-
+print(n*(n+1)//2)
+#Method-2:-
+sum=0
+for i in range(1,n+1):
+    sum+=i
+print(sum)
+#Method-3:-
+def sum(n):
+    if n==0:
+        return 0
+    return n+sum(n-1)
+print(sum(n))
+________________________________________________________________________________________________
+#Factorial of a Number : Iterative and Recursive
+"""
+Problem Statement: Given a number X,  print its factorial.
+
+To obtain the factorial of a number, it has to be multiplied by all the whole numbers preceding it. More precisely X! = X*(X-1)*(X-2) … 1.
+
+Note: X  is always a positive number. 
+
+Examples
+Example 1:
+Input: X = 5
+Output: 120
+Explanation: 5! = 5*4*3*2*1
+
+Example 2:
+Input: X = 3
+Output: 6
+Explanation: 3!=3*2*1
+"""
+n=int(input("Enter the number:-"))
+
+def factorial_iterative(n):
+    fact=1
+    for i in range(1,n+1):
+        fact*=i
+    return fact
+print(factorial(n))
+#Another_Method:-
+
+def factorial_recursion(n):
+    if n==0 or n==1:
+        return n
+    return n*factorial_recursion(n-1)
+print(factorial_recursion(n))
+______________________________________________________________________________________________________________
+#Reverse a given Array:-
+"""
+
+Problem Statement: You are given an array. The task is to reverse the array and print it.
+
+Examples
+Input: N = 5, arr[] = {5,4,3,2,1}
+Output: {1,2,3,4,5}
+Explanation: Since the order of elements gets reversed the first element will occupy the fifth position, the second element occupies the fourth position and so on.
+
+Input: N=6 arr[] = {10,20,30,40}
+Output: {40,30,20,10}
+Explanation: Since the order of elements gets reversed the first element will occupy the fifth position, the second element occupies the fourth position and so on
+"""
+
+n=int(input("Enter the size:-"))
+arr=[]
+for i in range(n):
+    x=int(input("Enter the number:-"))
+    arr.append(x)
+print(arr)
+#Method-1:
+def reverse_array(arr):
+    left=0
+    right=n-1
+    while left<right:
+        arr[left],arr[right]=arr[right],arr[left]
+        left+=1
+        right-=1
+    return arr
+print(reverse_array(arr))
+#Method-2:
+print(arr[::-1])
+#Method-3:-
+def reverse_recursive(arr,left,right):
+    if left>=right:
+        return 
+    arr[left],arr[right]=arr[right],arr[left]
+    reverse_recursive(arr,left+1,right-1)
+reverse_recursive(arr,0,n-1)
+print(arr)
+_________________________________________________________________________________________________________________________________________________________
+#Check if the given String is Palindrome or not
+"""
+Problem Statement: Given a string, check if the string is palindrome or not. A string is said to be palindrome if the reverse of the string is the same as the string.
+
+Examples
+Example 1:
+Input: Str =  “ABCDCBA”
+Output: Palindrome
+Explanation: String when reversed is the same as string.
+
+Example 2:
+Input: Str = “TAKE U FORWARD”
+Output: Not Palindrome
+Explanation: String when reversed is not the same as string.
+"""
+
+s=input("Enter the string:-")
+#Method-1:-
+if s==s[::-1]:
+    print("Palindrome")
+else:
+    print("Not palindrome")
+#Method-2:-
+def is_palindrome(s,left,right):
+    if left>=right:
+        return True
+    if s[left]!=s[right]:
+        return False
+    return is_palindrome(s,left+1,right-1)
+
+if is_palindrome(s,0,len(s)-1):
+    print("Palindrome")
+else:
+    print("Not Palindrome")
+________________________________________________________________________________________________________________________________________________
+#Print Fibonacci Series up to Nth term
+"""
+Problem Statement: Given an integer N. Print the Fibonacci series up to the Nth term.
+
+Examples
+Example 1:
+Input: N = 5
+Output: 0 1 1 2 3 5
+Explanation: 0 1 1 2 3 5 is the fibonacci series up to 5th term.(0 based indexing)
+
+Example 2:
+Input: 6
+Output: 0 1 1 2 3 5 8
+Explanation: 0 1 1 2 3 5 8 is the fibonacci series upto 6th term.(o based indexing)
+"""
+
+n=int(input("Enter the number:-"))
+#Method-1:-
+a=0
+b=1
+if n==0:
+    print(0)
+else:
+    print(a,b,end=" ")
+    for i in range(2,n+1):
+        c=a+b
+        print(c,end=" ")
+        a,b=b,c
+#Method-2:-
+fib=[0,1]
+for i in range(2,n+1):
+    fib.append(fib[i-1]+fib[i-2])
+print(*fib)
+#Method-3:-
+def fib(n):
+    if n<=1:
+        return n
+    return fib(n-1)+fib(n-2)
+for i in range(n+1):
+    print(fib(i),end=" ")
+__________________________________________________________________________________________________________________________________________
+#Count frequency of each element in the array
+"""
+Problem Statement: Given an array, we have found the number of occurrences of each element in the array.
+
+Examples
+Example 1:
+Input: arr[] = {10,5,10,15,10,5};
+Output: 10  3
+	     5  2
+        15  1
+Explanation: 10 occurs 3 times in the array
+	      5 occurs 2 times in the array
+              15 occurs 1 time in the array
+
+Example2: 
+Input: arr[] = {2,2,3,4,4,2};
+Output: 2  3
+	    3  1
+        4  2
+Explanation: 2 occurs 3 times in the array
+	     3 occurs 1 time in the array
+             4 occurs 2 time in the array
+"""
+
+n=int(input("Enter the size:-"))
+arr=[]
+for i in range(n):
+    x=int(input("Enter the number:-"))
+    arr.append(x)
+print(arr)
+
+#Method-1:-
+freq={}
+for x in arr:
+    if x in freq:
+        freq[x]+=1
+    else:
+        freq[x]=1
+for key,value in freq.items():
+    print(key,value)
+
+ #Method-2:-
+from collections import Counter
+freq=Counter(arr)
+for key ,value in freq.items():
+    print(key,value)
+#Method-3:-
+visited=[False]*n
+for i in range(n):
+    if visited[i]:
+        continue
+    count=1
+    for j in range(i+1,n):
+        if(arr[i]==arr[j]):
+            visited[j]=True
+            count+=1
+    print(arr[i],count)
+________________________________________________________________________________________________________________________________________________________
+            
+
+
